@@ -1,3 +1,9 @@
+##############################################################################################################################
+# This program simulates a DVS sensor. The input images are specified as a directory in the program
+# Author: Ashish Rao M
+# email: ashish.rao.m@gmail.com
+##############################################################################################################################
+
 #!/usr/bin/env python
 import sys
 import matplotlib.pyplot as plt
@@ -16,19 +22,19 @@ if __name__ == '__main__':
     height = 260
     width = 346
     savevid = True
-    threshold = 14
+    threshold = 0.6
     event_file = utils.create_new_event_file('event_output/sim_events.txt')
 
-# initialise the video capture
-    img_src = sys.argv[1]  # inbuilt camera
-    images_names = [img_name for img_name in os.listdir(img_src) if img_name.endswith(".png")]
+# initialise the input images
+    img_src = sys.argv[1] 
+    images_names = [img_name for img_name in os.listdir(img_src) if img_name.endswith(".png")] 
     images_names.sort()
     
     if images_names:
         img = cv2.imread(img_src + '/' + images_names[0])
         img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         bg = cv2.flip(img, 1).astype('float64')
-        #bg = cv2.log(cv2.add(bg, 1))
+        bg = cv2.log(cv2.add(bg, 1))
         native_width = size(img, 1)  # get native frame width
         native_height = size(img, 0)  # get native frame height
     
@@ -47,7 +53,7 @@ if __name__ == '__main__':
         
         # logarithmic compression (log(1.0 + I))
         
-        #img = cv2.log(cv2.add(img, 1))
+        img = cv2.log(cv2.add(img, 1))
 
         # calculate difference with background
         dif = cv2.subtract(img, bg)
