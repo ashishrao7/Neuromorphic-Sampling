@@ -2,8 +2,6 @@
 
 This repository contains some experiments for reconstruction of simple image patterns. The DVS outputs of the input patterns are simulated and a reconstruction scheme is used to perform reconstruction
 
-Any of the datasets available  <a href=> here </a> can be used as the `data` folder.
-
 The pattern used in the experiment are shown below
 
 <table style="width:100%">
@@ -27,7 +25,7 @@ Run the following command to get reconstruction using delta modulation
 `python deltaModulate.py`
 
 
-Some of the reconstruction appear as follows
+Some of the reconstruction results  appear as shown below
 
 <table style="width:100%">
     <tr>
